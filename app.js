@@ -15,7 +15,7 @@ var healthMonitor;
 
 // Initialize service dependencies.
 LatexOnline.create('/tmp/downloads/', '/tmp/storage/')
-    .then(onInitialized)
+    .then(onInitialized);
 
 function onInitialized(latex) {
     latexOnline = latex;
@@ -152,8 +152,8 @@ app.get('/compile', async (req, res) => {
         sendError(res, 'ERROR: failed to parse request: ' + JSON.stringify(req.query));
 });
 
-var multer  = require('multer')
-var upload = multer({ dest: '/tmp/file-uploads/' })
+var multer  = require('multer');
+var upload = multer({ dest: '/tmp/file-uploads/' });
 app.post('/data', upload.any(), async (req, res) => {
     if (!req.files || req.files.length !== 1) {
         sendError(res, 'ERROR: files are not uploaded to server.');
