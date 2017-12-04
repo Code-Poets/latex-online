@@ -57,6 +57,9 @@ app.use(express.static(__dirname + '/public'));
 const cors = require('cors');
 app.use(cors());
 
+const parser = require('body-parser');
+app.use(parser.json());
+
 function sendError(res, userError) {
     res.set('Content-Type', 'text/plain');
     var statusCode = userError ? 400 : 500;
