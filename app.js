@@ -53,6 +53,10 @@ app.use(compression());
 app.use(useragent.express());
 app.use(express.static(__dirname + '/public'));
 
+// Support CORS
+const cors = require('cors');
+app.use(cors());
+
 function sendError(res, userError) {
     res.set('Content-Type', 'text/plain');
     var statusCode = userError ? 400 : 500;
