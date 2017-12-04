@@ -176,3 +176,9 @@ app.post('/data', upload.any(), async (req, res) => {
         sendError(res, 'ERROR: failed to process file upload!');
     utils.unlink(file.path);
 });
+
+function sendJsonError(res, jsonError, internalError) {
+  res.set('Content-Type', 'application/json');
+  var statusCode = internalError ? 500 : 400;
+  res.status(statusCode).send(jsonError)
+}
