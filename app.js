@@ -58,7 +58,7 @@ const cors = require('cors');
 app.use(cors());
 
 const parser = require('body-parser');
-app.use(parser.json());
+app.use(parser.json({limit: '100MB'}));
 
 function sendError(res, userError) {
     res.set('Content-Type', 'text/plain');
