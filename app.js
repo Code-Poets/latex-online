@@ -185,6 +185,29 @@ function sendJsonError(res, jsonError, internalError) {
 
 // For expected JSON body structure refer to DownloadMenager.createJsonDownloader method
 app.post('/from-json', upload.any(), async (req, res) => {
+  const jsonError = {};
+  if (!('text' in req.body)) {
+    jsonError.text = ['This field is required.'];
+  }
+  if ('images' in req.body) {
+    if (!('length' in req.body.images)) {
+      jsonError.images = ['The field should be an array of {image-name, image-data} pairs.'];
+    } else {
+        for (let i = 0; i < req.body.images.length; i++) {
+            if (!('name' in req.body.images[i] && 'imageDataUrl' in req.body.images[i])) {
+                if (jsonError.images === undefined) {
+                  jsonError.images = ['The field should be an array of {image-name, image-data} pairs.'];
+                }
+                jsonError.images.append('Item ' + i + ' is invalid.');
+            }
+        }
+    }
+  }
+
+  if (Object.keys(jsonError).length) {
+      sendJsonError(res, jsonError);
+      return;
+  }
 
   var command = 'pdflatex';
   var preparation = await latexOnline.prepareJsonCompilation(req.body, command);
