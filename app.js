@@ -182,3 +182,14 @@ function sendJsonError(res, jsonError, internalError) {
   var statusCode = internalError ? 500 : 400;
   res.status(statusCode).send(jsonError)
 }
+
+// For expected JSON body structure refer to DownloadMenager.createJsonDownloader method
+app.post('/from-json', upload.any(), async (req, res) => {
+
+  var command = 'pdflatex';
+  var preparation = await latexOnline.prepareJsonCompilation(req.body, command);
+  if (preparation)
+      handleResult(res, preparation, false, req.query.download);
+  else
+      sendJsonError(res, {'error': 'Failed to process.'}, true );
+});
