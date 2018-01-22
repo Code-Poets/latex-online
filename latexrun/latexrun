@@ -745,7 +745,7 @@ class LaTeX(Task):
         # arguments can be given with one or two dashes and those with
         # values can use an equals or a space).
         return [self.__cmd] + self.__cmd_args + \
-            ['-interaction', 'nonstopmode', '-recorder',
+            ['-interaction', 'nonstopmode', '-recorder', '--shell-escape',
              '-output-directory', self.__obj_dir, filename]
 
     def _execute(self):
