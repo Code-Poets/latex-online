@@ -24,7 +24,8 @@ RUN apt-get clean && apt-get update && apt-get install -y \
     texlive-latex-extra \
     texlive-math-extra \
     texlive-science \
-    texlive-xetex
+    texlive-xetex \
+    inkscape
 
 # Add xindy-2.2 instead of makeindex.
 ADD ./packages/xindy-2.2-rc2-linux.tar.gz /opt
