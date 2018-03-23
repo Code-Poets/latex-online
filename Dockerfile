@@ -95,6 +95,7 @@ RUN apt-get clean && apt-get update && apt-get install -y \
     texlive-latex-recommended \
     texlive-science \
     texlive-xetex \
+    texlive-full \
     inkscape
 
 # Add xindy-2.2 instead of makeindex.
