@@ -25,7 +25,7 @@ function onInitialized(latex) {
     }
 
     // Initialize janitor to clean up stale storage.
-    var expiry = utils.hours(24);
+    var expiry = utils.minutes(55);
     var cleanupTimeout = utils.minutes(5);
     var janitor = new Janitor(latexOnline, expiry, cleanupTimeout);
 
