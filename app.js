@@ -14,7 +14,7 @@ var latexOnline;
 var healthMonitor;
 
 // Initialize service dependencies.
-LatexOnline.create('/tmp/downloads/', '/tmp/storage/')
+LatexOnline.create('/tmp/latex-online-downloads/', '/tmp/latex-online-cache/')
     .then(onInitialized);
 
 function onInitialized(latex) {
