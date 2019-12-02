@@ -41,6 +41,7 @@ function onInitialized(latex) {
             sha: VERSION
         });
     });
+    listener.setTimeout(600000);
 }
 
 // Initialize server.
